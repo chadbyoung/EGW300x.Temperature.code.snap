@@ -1,0 +1,30 @@
+name: egw3k-hts221 # you probably want to 'snapcraft register <name>'
+version: '0.0400' # just for humans, typically '1.2+git' or '1.3.2'
+summary: Simple snap to read and display the temperature # 79 char long summary
+description: |
+  #This snap will read the ST HTS221 sensor on the EGW3K 3002 and then display the
+  #temperature.
+  #
+  #snapcraft ver = 0.0400
+  #hts221_temp.py = 0.0300
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+
+apps:
+    temperature:
+        command: "usr/local/bin/python $SNAP/hts221_temp.py"
+    python:
+        command: usr/local/bin/python
+
+parts:
+  pyinstall:
+    plugin: make
+    source: https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz
+    source-type: tar
+    prepare: |
+        ./configure
+  myfiles:
+    plugin: dump
+    source: .
