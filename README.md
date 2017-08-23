@@ -4,12 +4,14 @@
 
 
 # Readme for EGW3K-HTS221 snap
-This is a snap for the Edge Gateway 3000 which uses the ST Micro HTS221
+This is a snap for the Dell Edge Gateway 3000 which uses the ST Micro HTS221
 temperature sensor. The snap runs a python script on Ubuntu Core 16 and returns
-it current temperature. This snap is meant to be used as a reference on how-to
-create snaps for Ubuntu Core 16 and as such should not be used in a production
-environment. As with anything you find on the internet please proceed with
-caution as you never know when Gremlins, Goblins, or Trolls will appear.
+the current temperature observed at the sensor. Keep in mind that this sensor
+is inside the system and as such measures the temperature "inside the box". This
+snap is meant to be used as a reference on how-to create snaps for Ubuntu Core
+16 and as such should not be used in a production environment. As with anything
+you find on the internet please proceed with caution as you never know when
+Gremlins, Goblins, or Trolls will appear.
 
 ### What is occurring:
 
