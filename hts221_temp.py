@@ -33,6 +33,20 @@
 
 from os import path
 
+BASE_PATH = '/sys/bus/iio/devices/iio:device'
+
+def pathBuilder(i, value_type):
+    return BASE_PATH + str(i) + '/' + value_type
+
+
+def readRaw(i, value_type):
+    in_temp_raw = open(pathBuilder + str(i) + '/'+ value_type, "r")
+    flt_raw_input = in_temp_raw.readline()
+    InTempRaw = float(flt_raw_input)
+    # DEBUG
+    # print("InTempRaw =", InTempRaw)
+    in_temp_raw.close
+
 # set the main loop count to 0
 i = 0
 
@@ -51,8 +65,8 @@ while i < 4:
 
     # if path.exists('./device%s/name' % i) and
     # -- path.isfile('./device%s/name' % i):
-    if path.exists('/sys/bus/iio/devices/iio:device%s/name' % i) and \
-            path.isfile('/sys/bus/iio/devices/iio:device%s/name' % i):
+    if path.exists(pathBuilder(i, 'name')) and \
+            path.isfile(pathBuilder(i, 'name')):
 
         # TODO: add error handling for no devices found.
 
@@ -76,12 +90,12 @@ while i < 4:
             # print("The file with the text hts221 what found here:", PATH)
 
             # Read the "in_temp_raw" file
-            in_temp_raw = open('/sys/bus/iio/devices/iio:device%s/in_temp_raw' % i, "r")
-            flt_raw_input = in_temp_raw.readline()
-            InTempRaw = float(flt_raw_input)
+            readRaw(i, 'name')
+            #flt_raw_input = in_temp_raw.readline()
+            #InTempRaw = float(flt_raw_input)
             # DEBUG
             # print("InTempRaw =", InTempRaw)
-            in_temp_raw.close
+            #in_temp_raw.close
 
             # Read the "in_temp_offset" file
             in_temp_offset = open('/sys/bus/iio/devices/iio:device%s/in_temp_offset' % i, "r")

@@ -15,8 +15,10 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 apps:
     temperature:
         command: "usr/local/bin/python $SNAP/hts221_temp.py"
-    python:
-        command: usr/local/bin/python
+#    temp:
+#        command: hts221_temp_1.py
+#    python:
+#        command: usr/local/bin/python
 
 parts:
   pyinstall:
