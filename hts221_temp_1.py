@@ -160,6 +160,6 @@ def readTemp():
 
             # need to add the counter so that the main loop will continue
         i = i + 1
-        
+
 if __name__ == "__main__":
     readTemp()
